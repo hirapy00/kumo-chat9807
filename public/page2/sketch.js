@@ -66,14 +66,18 @@ function setup() {
   rakubutton.mousePressed(rakumode);
   
   socket = io();
-  //socket = io('http://192.168.1.6:3000');
-  
+  socket.on('catch',newdrawing);
   background(255);
   
   a=12;
   b=12;
   c=12;
   d=12;
+  
+  e=12;
+  f=12;
+  g=12;
+  h=12;
 }
 
 function draw() {
@@ -84,6 +88,11 @@ function draw() {
   image(chat[b],windowWidth/2,windowWidth/2,windowWidth/2,windowWidth/4); 
   image(chat[a],windowWidth/2,3*windowWidth/4,windowWidth/2,windowWidth/4); 
   
+  image(chat[h],0,0,windowWidth/2,windowWidth/4);
+  image(chat[g],0,windowWidth/4,windowWidth/2,windowWidth/4);
+  image(chat[f],0,windowWidth/2,windowWidth/2,windowWidth/4); 
+  image(chat[e],0,3*windowWidth/4,windowWidth/2,windowWidth/4); 
+  
   
   
 }
@@ -91,20 +100,40 @@ function draw() {
 
 function sendpurasu() {
   var paper=1;  
-  console.log('Sending:'+paper);  
+  var aa=a;
+  console.log('Sending:'+paper+','+aa);  
   var date = {
-     paper:paper
+     paper:paper,
+     aa:aa
   }
   socket.emit('send',date);    
 }
 
 function sendmainasu() {
   var paper=-1;  
-  console.log('Sending:'+paper);  
+  var aa=a;
+  console.log('Sending:'+paper+','+aa);  
   var date = {
-     paper:paper
+     paper:paper,
+     aa:aa
   }
   socket.emit('send',date);    
+}
+
+function newdrawing(date){
+  console.log(date);
+  key=true;
+  if(key==true){
+    h=g;
+    g=f;
+    f=e;
+    e=date.aa;
+    d=c;
+    c=b;
+    b=a;
+    a=12;
+    key=false;
+  }
 }
 
   
@@ -114,6 +143,10 @@ function kimode(){
   c=b;
   b=a;
   a=random(ki);
+  h=g;
+  g=f;
+  f=e;
+  e=12;
   sendpurasu();
 }
 function domode(){
@@ -121,6 +154,10 @@ function domode(){
   c=b;
   b=a;
   a=random(doo);
+  h=g;
+  g=f;
+  f=e;
+  e=12;
   sendmainasu();
 }
 function aimode(){
@@ -128,6 +165,10 @@ function aimode(){
   c=b;
   b=a;
   a=random(ai);
+  h=g;
+  g=f;
+  f=e;
+  e=12;
   sendmainasu();
 }
 function rakumode(){
@@ -135,5 +176,9 @@ function rakumode(){
   c=b;
   b=a;
   a=random(raku)
+  h=g;
+  g=f;
+  f=e;
+  e=12;
   sendpurasu();
 }
