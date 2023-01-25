@@ -33,6 +33,18 @@ function preload(){
   chat[10] = loadImage('raku2.png');
   chat[11] = loadImage('raku3.png');
   chat[12] = loadImage('siro.png');
+  chat[20] = loadImage('ki21.png');
+  chat[21] = loadImage('ki22.png');
+  chat[22] = loadImage('ki23.png');
+  chat[23] = loadImage('do21.png');
+  chat[24] = loadImage('do22.png');
+  chat[25] = loadImage('do23.png');
+  chat[26] = loadImage('ai21.png');
+  chat[27] = loadImage('ai22.png');
+  chat[28] = loadImage('ai23.png');
+  chat[29] = loadImage('raku21.png');
+  chat[30] = loadImage('raku22.png');
+  chat[31] = loadImage('raku23.png');
 }
 
 
@@ -127,7 +139,7 @@ function newdrawing(date){
     h=g;
     g=f;
     f=e;
-    e=date.aa;
+    e=date.aa+20;
     d=c;
     c=b;
     b=a;
