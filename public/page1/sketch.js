@@ -29,7 +29,6 @@ function preload(){
 
 
 function setup() {
-//socket = io('http://192.168.1.6:3000');
   socket = io();
   socket.on('catch',newdrawing);
 
@@ -41,7 +40,12 @@ key=true;
   
 
 if(key==true){
-wallstate=wallstate+date.paper;
+  if(date.paper>0){
+    wallcount=wallcount+date.paper;
+  }else if(date.paper<0){
+    wallcount=wallcount*date.paper;
+  }
+
 i=200;
 key=false;
   }
@@ -57,15 +61,6 @@ function draw() {
     i+=0.1;
   }
   
-  if(wallstate>5){
-    wallcount=wallcount+1;
-    i=0;
-    wallstate=0;
-  }else if(wallstate<-5){
-    wallcount=wallcount*-1;
-    i=0;
-    wallstate=0;
-  }
   
   if(wallcount==1||wallcount==-1){
     image(happa[wallcount],-windowWidth/8,-windowHeight/6,windowWidth/4,windowHeight/6);
