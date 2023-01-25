@@ -40,9 +40,9 @@ key=true;
   
 
 if(key==true){
-  if(date.paper>0){
+  if(date.paper>0&&wallcount>0){
     wallcount=wallcount+date.paper;
-  }else if(date.paper<0){
+  }else if(date.paper<0&&wallcount>0){
     wallcount=wallcount*date.paper;
   }
 
@@ -85,6 +85,7 @@ function draw() {
   }
   
   if(wallcount>=10||wallcount<0){
+    wallstate=wallcount;
     setTimeout(function(){
       wallcount=1;
     },2000)
