@@ -27,6 +27,11 @@ function preload(){
   happa[-9]=loadImage('aset10b.png');
 }
 
+function mousePressed() {
+  let fs = fullscreen();
+  fullscreen(!fs);
+}
+
 
 function setup() {
   socket = io();
